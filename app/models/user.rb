@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # associations
+  has_many :collected_coins, dependent: :destroy
 end
