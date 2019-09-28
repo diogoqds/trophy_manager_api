@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+{
+  trophies: @trophies.map do |trophy|
+    {
+      id: trophy.id,
+      description: trophy.description
+    }
+  end
+}

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :deaths, only: %i[create]
     resources :monsters, only: %i[index]
     resources :killed_monsters, only: %i[create]
+    resources :trophies, only: %i[index]
   end
 end

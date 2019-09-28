@@ -6,4 +6,7 @@ class AwardEntity < ApplicationRecord
   # associations
   belongs_to :entity, polymorphic: true, optional: true
   has_many :rules, dependent: :destroy
+
+  # delegate
+  delegate :award_entity_name, to: :name, prefix: true, allow_nil: true
 end
