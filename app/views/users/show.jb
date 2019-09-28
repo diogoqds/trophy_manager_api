@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+require 'json_web_token'
+{
+  id: @user.id,
+  email: @user.email,
+  token: JsonWebToken.encode(id: @user.id)
+}

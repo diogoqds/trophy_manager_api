@@ -1,0 +1,42 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"
+    - "config/**/*.rb"
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+  Max: 150
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/AbcSize:
+  Max: 30
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - "config/application.rb"
+
+RSpec/ExampleLength:
+  Max: 10
+AllCops:
+  TargetRubyVersion: 2.6.3
+  Exclude:
+    - "bin/*"
+    - "db/migrate/*.rb"
+    - "db/schema.rb"
+    - "lib/**/*.rake"
+    - "app/channels/application_cable/*.rb"
+    - "config/initializers/devise.rb"
+    - "config/initializers/devise.rb"
+    - "Guardfile" 
