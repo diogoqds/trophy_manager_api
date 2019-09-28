@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_171153) do
+ActiveRecord::Schema.define(version: 2019_09_28_171633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2019_09_28_171153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_deaths_on_user_id"
+  end
+
+  create_table "killed_monsters", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "monster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["monster_id"], name: "index_killed_monsters_on_monster_id"
+    t.index ["user_id"], name: "index_killed_monsters_on_user_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -50,4 +59,6 @@ ActiveRecord::Schema.define(version: 2019_09_28_171153) do
 
   add_foreign_key "collected_coins", "users"
   add_foreign_key "deaths", "users"
+  add_foreign_key "killed_monsters", "monsters"
+  add_foreign_key "killed_monsters", "users"
 end
