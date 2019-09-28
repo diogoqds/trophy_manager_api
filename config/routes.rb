@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resource :session, only: %i[create]
     resources :users, only: %i[create]
     resources :collected_coins, only: %i[create]
+    resources :deaths, only: %i[create]
   end
 end

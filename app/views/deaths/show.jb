@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+{
+  id: @death.id,
+  user_id: @death.user_id,
+  created_at: @death.created_at
+}
