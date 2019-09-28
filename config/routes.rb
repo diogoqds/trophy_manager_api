@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :users, only: %i[create]
     resources :collected_coins, only: %i[create]
     resources :deaths, only: %i[create]
+    resources :monsters, only: %i[index]
   end
 end

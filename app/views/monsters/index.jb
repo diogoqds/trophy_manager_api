@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+{
+  monsters: @monsters.map do |monster|
+    {
+      id: monster.id,
+      name: monster.name
+    }
+  end
+}
