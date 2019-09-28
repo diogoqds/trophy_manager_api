@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  mount RailsAdmin::Engine => '/', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   scope :api do
     resource :session, only: %i[create]
     resources :users, only: %i[create]

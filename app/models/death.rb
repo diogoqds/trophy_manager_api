@@ -11,12 +11,7 @@ class Death < ApplicationRecord
     ActiveRecord::Base.transaction do
       award_entity = AwardEntity.find_by(name: model_name.name)
       value = user.deaths.count
-      if value >= 1
-        death_rules = award_entity&.rules&.where(value: 1..value)
-        death_rules&.each do |death_rule|
-          Trophy.find_or_create_by!(user: user, rule: death_rule)
-        end
-      end
+      ApplicationRecord.create_trophy(award_entity, user, value) if value >= 1
     end
   end
 end

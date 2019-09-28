@@ -14,13 +14,7 @@ class CollectedCoin < ApplicationRecord
     ActiveRecord::Base.transaction do
       award_entity = AwardEntity.find_by(name: model_name.name)
       value = user.collected_coins.pluck(:value).sum
-      coin_rules = award_entity&.rules&.where(value: 1..value)
-      coin_rules&.each do |coin_rule|
-        Trophy.find_or_create_by!(
-          user: user,
-          rule: coin_rule
-        )
-      end
+      ApplicationRecord.create_trophy(award_entity, user, value)
     end
   end
 end

@@ -14,13 +14,7 @@ class KilledMonster < ApplicationRecord
       value = user.killed_monsters.where(monster: monster).count
       if value >= 1
         award_entity = AwardEntity.find_by(entity: monster)
-        monster_rules = award_entity&.rules&.where(value: 1..value)
-        monster_rules&.each do |monster_rule|
-          Trophy.find_or_create_by!(
-            user: user,
-            rule: monster_rule
-          )
-        end
+        ApplicationRecord.create_trophy(award_entity, user, value)
       end
     end
   end
