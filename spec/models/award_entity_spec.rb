@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe Monster, type: :model do
+RSpec.describe AwardEntity, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:name).ignoring_case_sensitivity }
-  it { is_expected.to have_many(:killed_monsters).dependent(:destroy) }
-  it { is_expected.to have_many(:award_entities).dependent(:destroy) }
+  it { is_expected.to belong_to(:entity).optional }
+  it { is_expected.to have_many(:rules).dependent(:destroy) }
 end

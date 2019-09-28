@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_171633) do
+ActiveRecord::Schema.define(version: 2019_09_28_183808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "award_entities", force: :cascade do |t|
+    t.string "name"
+    t.string "entity_type"
+    t.bigint "entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity_type", "entity_id"], name: "index_award_entities_on_entity_type_and_entity_id"
+  end
 
   create_table "collected_coins", force: :cascade do |t|
     t.bigint "user_id"
@@ -45,6 +54,14 @@ ActiveRecord::Schema.define(version: 2019_09_28_171633) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rules", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "award_entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["award_entity_id"], name: "index_rules_on_award_entity_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,4 +78,5 @@ ActiveRecord::Schema.define(version: 2019_09_28_171633) do
   add_foreign_key "deaths", "users"
   add_foreign_key "killed_monsters", "monsters"
   add_foreign_key "killed_monsters", "users"
+  add_foreign_key "rules", "award_entities"
 end
