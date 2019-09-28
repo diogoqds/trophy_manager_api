@@ -8,4 +8,5 @@ RSpec.describe Rule, type: :model do
   it { is_expected.to validate_numericality_of(:value).is_greater_than(0) }
   it { is_expected.to belong_to(:award_entity) }
   it { is_expected.to validate_uniqueness_of(:value).scoped_to(:award_entity_id) }
+  it { is_expected.to have_many(:trophies).dependent(:destroy) }
 end
