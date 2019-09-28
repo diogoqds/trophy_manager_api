@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+{
+  id: @killed_monster.id,
+  user_id: @killed_monster.user_id,
+  monster_id: @killed_monster.monster_id
+}
