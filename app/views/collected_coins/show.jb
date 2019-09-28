@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+{
+  id: @collected_coin.id,
+  value: @collected_coin.value,
+  user_id: @collected_coin.user_id
+}
