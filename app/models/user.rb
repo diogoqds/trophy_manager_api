@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   # associations
   has_many :collected_coins, dependent: :destroy
+  has_many :deaths, dependent: :destroy
 end
