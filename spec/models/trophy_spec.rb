@@ -41,4 +41,42 @@ RSpec.describe Trophy, type: :model do
 
     it { expect(user.trophies.length).to eq(3) }
   end
+
+  describe 'create killed_monster trophies' do
+    context 'when moster is turtle' do
+      let(:user) { create(:user) }
+      let(:turtle) { create(:monster, name: 'Turtle') }
+      let(:turtle_award) { create(:award_entity, name: turtle.name, entity: turtle) }
+
+      before do
+        create(:rule, value: 1, award_entity: turtle_award)
+        create(:rule, value: 100, award_entity: turtle_award)
+        create(:rule, value: 200, award_entity: turtle_award)
+        create(:rule, value: 500, award_entity: turtle_award)
+
+        create_list(:killed_monster, 520, user: user, monster: turtle)
+        user.reload
+      end
+
+      it { expect(user.trophies.length).to eq(4) }
+    end
+
+    context 'when moster is bowser' do
+      let(:user) { create(:user) }
+      let(:bowser) { create(:monster, name: 'Bowser') }
+      let(:bowser_award) { create(:award_entity, name: bowser.name, entity: bowser) }
+
+      before do
+        create(:rule, value: 1, award_entity: bowser_award)
+        create(:rule, value: 100, award_entity: bowser_award)
+        create(:rule, value: 200, award_entity: bowser_award)
+        create(:rule, value: 500, award_entity: bowser_award)
+
+        create_list(:killed_monster, 520, user: user, monster: bowser)
+        user.reload
+      end
+
+      it { expect(user.trophies.length).to eq(4) }
+    end
+  end
 end
