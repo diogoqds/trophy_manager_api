@@ -23,4 +23,22 @@ RSpec.describe Trophy, type: :model do
 
     it { expect(user.trophies.length).to eq(5) }
   end
+
+  describe 'create death trophies' do
+    let(:user) { create(:user) }
+    let(:death_award) { create(:award_entity, name: 'Death') }
+
+    before do
+      create(:rule, value: 1, award_entity: death_award)
+      create(:rule, value: 10, award_entity: death_award)
+      create(:rule, value: 25, award_entity: death_award)
+      create(:rule, value: 50, award_entity: death_award)
+      create(:rule, value: 100, award_entity: death_award)
+
+      create_list(:death, 39, user: user)
+      user.reload
+    end
+
+    it { expect(user.trophies.length).to eq(3) }
+  end
 end
