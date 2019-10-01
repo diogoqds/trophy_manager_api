@@ -49,3 +49,8 @@ Essa é uma solução mais genérica e que consegue resolver o problema proposto
 ![bd-v3](bd-v3.png)
 
 O problema dessa solução seria a tabela de AwardEntity que precisa ter o nome igual ao do model.
+
+## v4
+![bd-v4](bd-v4.png)
+
+Adicionado uma relacionamento n pra n entre usuários e troféus.
