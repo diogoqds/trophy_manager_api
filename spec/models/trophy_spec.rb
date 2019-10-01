@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe Trophy, type: :model do
   it { is_expected.to belong_to(:rule) }
-  it { is_expected.to have_many(:trophy_users) }
-  it { is_expected.to have_many(:users).through(:trophy_users) }
+  it { is_expected.to have_many(:trophy_users).dependent(:destroy) }
+  it { is_expected.to have_many(:users).through(:trophy_users).dependent(:destroy) }
 
   describe 'create coin trophies' do
     let(:user) { create(:user) }

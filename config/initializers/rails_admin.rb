@@ -38,7 +38,6 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
-
   end
   config.model Trophy do
     list do
