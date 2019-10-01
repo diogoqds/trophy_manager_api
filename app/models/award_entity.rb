@@ -14,6 +14,8 @@ class AwardEntity < ApplicationRecord
   before_validation :check_name
 
   def check_name
+    return unless entity.nil?
+
     tables_name = ActiveRecord::Base.connection.tables.map { |t| t.camelize.singularize }
     errors.add(:name) unless tables_name.include?(name)
   end
