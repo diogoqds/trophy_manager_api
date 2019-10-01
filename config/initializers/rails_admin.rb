@@ -38,5 +38,16 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+
+  end
+  config.model Trophy do
+    list do
+      field :id
+      field :rule
+      field :description
+      field :trophy_users
+      field :created_at
+      field :updated_at
+    end
   end
 end
