@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_190726) do
+ActiveRecord::Schema.define(version: 2019_10_01_001951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2019_09_28_190726) do
     t.index ["user_id"], name: "index_collected_coins_on_user_id"
   end
 
+  create_table "collected_potions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "potion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["potion_id"], name: "index_collected_potions_on_potion_id"
+    t.index ["user_id"], name: "index_collected_potions_on_user_id"
+  end
+
   create_table "deaths", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -48,7 +57,21 @@ ActiveRecord::Schema.define(version: 2019_09_28_190726) do
     t.index ["user_id"], name: "index_killed_monsters_on_user_id"
   end
 
+  create_table "levels", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_levels_on_user_id"
+  end
+
   create_table "monsters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "potions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,12 +86,19 @@ ActiveRecord::Schema.define(version: 2019_09_28_190726) do
   end
 
   create_table "trophies", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "rule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rule_id"], name: "index_trophies_on_rule_id"
-    t.index ["user_id"], name: "index_trophies_on_user_id"
+  end
+
+  create_table "trophy_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "trophy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trophy_id"], name: "index_trophy_users_on_trophy_id"
+    t.index ["user_id"], name: "index_trophy_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,10 +114,14 @@ ActiveRecord::Schema.define(version: 2019_09_28_190726) do
   end
 
   add_foreign_key "collected_coins", "users"
+  add_foreign_key "collected_potions", "potions"
+  add_foreign_key "collected_potions", "users"
   add_foreign_key "deaths", "users"
   add_foreign_key "killed_monsters", "monsters"
   add_foreign_key "killed_monsters", "users"
+  add_foreign_key "levels", "users"
   add_foreign_key "rules", "award_entities"
   add_foreign_key "trophies", "rules"
-  add_foreign_key "trophies", "users"
+  add_foreign_key "trophy_users", "trophies"
+  add_foreign_key "trophy_users", "users"
 end

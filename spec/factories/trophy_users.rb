@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :trophy do
-    rule
+  factory :trophy_user do
+    user
+    trophy
   end
 end

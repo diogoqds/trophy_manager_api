@@ -2,7 +2,8 @@
 
 class Trophy < ApplicationRecord
   # associations
-  belongs_to :user
+  has_many :trophy_users
+  has_many :users, through: :trophy_users
   belongs_to :rule
 
   # delegate

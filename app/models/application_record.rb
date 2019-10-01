@@ -8,7 +8,7 @@ class ApplicationRecord < ActiveRecord::Base
       rules = award_entity&.rules&.where(value: 1..value)
 
       rules&.each do |rule|
-        Trophy.find_or_create_by!(user: user, rule: rule)
+        user.trophies.find_or_create_by!(rule: rule)
       end
     end
   end
