@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :monsters, only: %i[index]
     resources :killed_monsters, only: %i[create]
     resources :trophies, only: %i[index]
+    resources :generic_item_users, only: %i[create]
   end
 end
