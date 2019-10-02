@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :generic_item_user do
-    user { nil }
-    generic_item { nil }
+    user
+    generic_item
   end
 end

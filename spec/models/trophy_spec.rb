@@ -80,4 +80,42 @@ RSpec.describe Trophy, type: :model do
       it { expect(user.trophies.length).to eq(4) }
     end
   end
+
+  describe 'create generic_item trophies' do
+    context 'when generic_item is potion' do
+      let(:user) { create(:user) }
+      let(:potion) { create(:generic_item, name: 'Potion') }
+      let(:potion_award) { create(:award_entity, name: potion.name, entity: potion) }
+
+      before do
+        create(:rule, value: 1, award_entity: potion_award)
+        create(:rule, value: 100, award_entity: potion_award)
+        create(:rule, value: 200, award_entity: potion_award)
+        create(:rule, value: 500, award_entity: potion_award)
+
+        create_list(:generic_item_user, 20, user: user, generic_item: potion)
+        user.reload
+      end
+
+      it { expect(user.trophies.length).to eq(1) }
+    end
+
+    context 'when generic_item is sword' do
+      let(:user) { create(:user) }
+      let(:sword) { create(:generic_item, name: 'Sword') }
+      let(:sword_award) { create(:award_entity, name: sword.name, entity: sword) }
+
+      before do
+        create(:rule, value: 1, award_entity: sword_award)
+        create(:rule, value: 10, award_entity: sword_award)
+        create(:rule, value: 50, award_entity: sword_award)
+        create(:rule, value: 100, award_entity: sword_award)
+
+        create_list(:generic_item_user, 20, user: user, generic_item: sword)
+        user.reload
+      end
+
+      it { expect(user.trophies.length).to eq(2) }
+    end
+  end
 end
