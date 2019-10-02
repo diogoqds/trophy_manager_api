@@ -12,5 +12,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:killed_monsters).dependent(:destroy) }
     it { is_expected.to have_many(:trophy_users).dependent(:destroy) }
     it { is_expected.to have_many(:trophies).through(:trophy_users).dependent(:destroy) }
+    it { is_expected.to have_many(:generic_item_users).dependent(:destroy) }
+    it { is_expected.to have_many(:generic_items).through(:generic_item_users).dependent(:destroy) }
   end
 end

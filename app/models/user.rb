@@ -12,4 +12,6 @@ class User < ApplicationRecord
   has_many :killed_monsters, dependent: :destroy
   has_many :trophy_users, dependent: :destroy
   has_many :trophies, through: :trophy_users, dependent: :destroy
+  has_many :generic_item_users, dependent: :destroy
+  has_many :generic_items, through: :generic_item_users, dependent: :destroy
 end
