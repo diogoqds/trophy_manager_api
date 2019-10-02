@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :generic_item do
-    name { 'MyString' }
+    sequence(:name) { |n| "GenericItem#{n}" }
   end
 end

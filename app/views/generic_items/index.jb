@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+{
+  generic_items: @generic_items.map do |generic_item|
+    {
+      id: generic_item.id,
+      name: generic_item.name
+    }
+  end
+}
