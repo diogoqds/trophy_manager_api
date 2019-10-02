@@ -54,3 +54,9 @@ O problema dessa solução seria a tabela de AwardEntity que precisa ter o nome 
 ![bd-v4](bd-v4.png)
 
 Adicionado uma relacionamento n pra n entre usuários e troféus.
+
+## v5
+![bd-v5](bd-v5.png)
+
+Adicionado tabela GenericItem e um relacionamento n pra n entre Users e GenericItem,
+com isso é possível criar outros items dentro do jogo como Poções ou Espadas e adicionar regras para se ganhar troféu.
