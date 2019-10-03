@@ -14,7 +14,7 @@ class GenericItemUser < ApplicationRecord
 
   def create_trophy
     ActiveRecord::Base.transaction do
-      value = user.generic_item_users.where(generic_item: generic_item).count
+      value = user.generic_item_users.where(generic_item: generic_item).pluck(:value).sum
       if value >= 1
         award_entity = AwardEntity.find_by(entity: generic_item)
         ApplicationRecord.create_trophy(award_entity, user, value)

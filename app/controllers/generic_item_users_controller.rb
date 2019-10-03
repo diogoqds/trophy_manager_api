@@ -13,6 +13,6 @@ class GenericItemUsersController < ApplicationController
   private
 
   def generic_item_user_params
-    params.require(:generic_item_user).permit(:generic_item_id)
+    params.require(:generic_item_user).permit(:generic_item_id, :value)
   end
 end

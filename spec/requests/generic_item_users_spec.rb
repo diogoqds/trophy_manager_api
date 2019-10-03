@@ -9,7 +9,8 @@ RSpec.describe 'GenericItemUsers', type: :request do
       let(:generic_item) { create(:generic_item) }
       let(:generic_item_user_params) do
         {
-          generic_item_id: generic_item.id
+          generic_item_id: generic_item.id,
+          value: 2
         }
       end
 
@@ -22,9 +23,11 @@ RSpec.describe 'GenericItemUsers', type: :request do
 
       it { expect(response).to have_http_status(:created) }
       it { expect(response_body).to have_key('id') }
+      it { expect(response_body).to have_key('value') }
       it { expect(GenericItemUser.count).to eq(1) }
       it { expect(response_body['user_id']).to eq(user.id) }
       it { expect(response_body['generic_item_id']).to eq(generic_item.id) }
+      it { expect(response_body['value']).to eq(2) }
     end
 
     context 'when params are valid' do

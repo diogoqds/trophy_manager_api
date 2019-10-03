@@ -3,5 +3,6 @@
 {
   id: @generic_item_user.id,
   user_id: @generic_item_user.user_id,
-  generic_item_id: @generic_item_user.generic_item_id
+  generic_item_id: @generic_item_user.generic_item_id,
+  value: @generic_item_user.value
 }

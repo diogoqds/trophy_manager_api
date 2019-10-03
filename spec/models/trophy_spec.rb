@@ -93,7 +93,7 @@ RSpec.describe Trophy, type: :model do
         create(:rule, value: 200, award_entity: potion_award)
         create(:rule, value: 500, award_entity: potion_award)
 
-        create_list(:generic_item_user, 20, user: user, generic_item: potion)
+        create(:generic_item_user, value: 20, user: user, generic_item: potion)
         user.reload
       end
 
@@ -111,11 +111,12 @@ RSpec.describe Trophy, type: :model do
         create(:rule, value: 50, award_entity: sword_award)
         create(:rule, value: 100, award_entity: sword_award)
 
-        create_list(:generic_item_user, 20, user: user, generic_item: sword)
+        create(:generic_item_user, value: 1, user: user, generic_item: sword)
+        create(:generic_item_user, value: 5, user: user, generic_item: sword)
         user.reload
       end
 
-      it { expect(user.trophies.length).to eq(2) }
+      it { expect(user.trophies.length).to eq(1) }
     end
   end
 end
