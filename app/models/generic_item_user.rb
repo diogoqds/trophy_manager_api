@@ -5,6 +5,9 @@ class GenericItemUser < ApplicationRecord
   belongs_to :user
   belongs_to :generic_item
 
+  # validations
+  validates :value, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
   # callbacks
 
   after_save :create_trophy
