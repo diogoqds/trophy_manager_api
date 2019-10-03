@@ -60,3 +60,8 @@ Adicionado uma relacionamento n pra n entre usuários e troféus.
 
 Adicionado tabela GenericItem e um relacionamento n pra n entre Users e GenericItem,
 com isso é possível criar outros items dentro do jogo como Poções ou Espadas e adicionar regras para se ganhar troféu.
+
+## v6
+![bd-v6](bd-v6.png)
+
+Adicionado o campo value a tabela GenericItemUsers, para não ter que fazer 100 requisições caso eu queira por exemplo coletar 100 de XP, ou 200 espadas.
