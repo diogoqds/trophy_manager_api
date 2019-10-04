@@ -9,4 +9,16 @@ class AwardEntity < ApplicationRecord
 
   # delegate
   delegate :award_entity_name, to: :name, prefix: true, allow_nil: true
+
+
+  # callbacks
+  before_validation :check_name
+
+  def check_name
+    return unless entity.nil?
+
+    tables_name = ActiveRecord::Base.connection.tables.map { |t| t.camelize.singularize }
+    errors.add(:name) unless tables_name.include?(name)
+  end
+
 end
