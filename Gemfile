@@ -65,4 +65,4 @@ gem 'simple_command'
 
 # A simpler and faster Jbuilder alternative.
 gem 'jb'
-gem 'rails_admin', '1.4.2'
+gem 'rails_admin', '1.4.3'
